@@ -7,6 +7,9 @@
     "dev": "nodemon app.js",
     "start": "node app.js",
     "knex": "knex",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
     "setup": "npm i && echo  > .env && echo \"SECRET_KEY='secret' \nDATABASE_NAME='tvoddatabase'\" >> .env && npm run reboot && npm run dev",
     "reboot": "npm run knex migrate:rollback && npm run knex migrate:latest && npm run knex seed:run"
   },

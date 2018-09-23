@@ -4,6 +4,7 @@ exports.up = knex => {
         table.increments()
         table.integer('user_id').notNullable().defaultsTo(0)
         table.integer('tv_id').notNullable()
+        table.string('tv_name').notNullable()
         table.boolean('watched')
         table.boolean('favorite')
         table.foreign('user_id').references('users.id').onDelete('CASCADE')

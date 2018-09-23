@@ -7,6 +7,7 @@ exports.up = knex => {
         table.integer('ep_id').notNullable()
         table.integer('season_no').notNullable()
         table.integer('ep_no').notNullable()
+        table.string('ep_name')
         table.boolean('watched')
         table.string('comments')
         table.integer('rating')

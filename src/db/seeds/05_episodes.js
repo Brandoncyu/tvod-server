@@ -7,6 +7,7 @@ exports.seed = knex => {
       ep_id: 57360,
       season_no: 1,
       ep_no: 1,
+      ep_name: 'Uno',
       watched: true,
       comments: 'A great start, and really, TUCO???',
       rating: 4
@@ -17,6 +18,7 @@ exports.seed = knex => {
       ep_id: 57361,
       season_no: 1,
       ep_no: 2,
+      ep_name: 'Mijo',
       watched: true,
       comments: 'An spectacular follow-up that brings more anticipation.',
       rating: 5

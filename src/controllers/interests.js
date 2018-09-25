@@ -1,4 +1,4 @@
-const model = require('../models/usersInterests')
+const model = require('../models/interests')
 
 async function getAll(req, res, next){
   const userId = req.params.userId

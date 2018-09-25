@@ -18,7 +18,9 @@ app.disable('x-powered-by')
 app.use(bodyParser.json())
 
 app.use('/api/users', require('./src/routes/users'))
-app.use('/api/users/:userId/interests', require('./src/routes/usersInterests'))
+app.use('/api/users/:userId/interests', require('./src/routes/interests'))
+app.use('/api/users/:userId/series', require('./src/routes/series'))
+app.use('/api/users/:userId/following', require('./src/routes/following'))
 
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))

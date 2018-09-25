@@ -1,5 +1,5 @@
 const router = require('express').Router({ mergeParams: true })
-const ctrl = require('../controllers/usersInterests')
+const ctrl = require('../controllers/interests')
 
 router.get('/', ctrl.getAll)
 

@@ -7,7 +7,9 @@ function getOne(userId) {
     .where({
       id: userId
     })
+    .first()
     .then(response => {
+      if (!response) throw new Error()
       return response
     })
 }

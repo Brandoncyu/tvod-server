@@ -29,9 +29,9 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
 app.use((err, req, res, next) => {
   if (NODE_ENV === 'development') console.error(err)
 
-  const message = `Something went wrong.`
   const {
-    status = 500, error = message
+    status = err.status || 500,
+    error = err.message || 'Something Went Wrong'
   } = err
 
   res.status(status).json({

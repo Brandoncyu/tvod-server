@@ -3,9 +3,13 @@ const auth = require('../lib/auth')
 const jwt = require('jsonwebtoken')
 
 async function getOne(req, res, next){
-  const userId = req.params.userId
-  let data = await model.getOne(userId)
-  res.send({data})
+  try {
+    const userId = req.params.userId
+    let data = await model.getOne(userId)
+    res.send({data})
+  } catch (e){
+      next({status:404, error: `Cannot find user`})
+  }
 }
 
 async function getAll(req, res, next){
@@ -20,7 +24,7 @@ async function signup (req, res, next) {
     const id = response.id
     res.status(201).json({ token, id })
   } catch (e) {
-    next({ status: 400, error: `User could not be registered` })
+      next({ status: 400, error: `User could not be registered` })
   }
 }
 
@@ -31,7 +35,7 @@ async function login (req, res, next) {
     const id = response.id
     res.json({ token, id })
   } catch (e) {
-    next({ status: 401, error: `Email or password is incorrect` })
+      next({ status: 401, error: `Email or password is incorrect` })
   }
 }
 
@@ -40,7 +44,7 @@ async function verify (req, res, next) {
     const response = await auth.isAuthorized(req)
     next()
   } catch (e) {
-    next({ status: 401, error: `Email or password is incorrect` })
+      next({ status: 401, error: `Email or password is incorrect` })
   }
 }
 

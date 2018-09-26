@@ -41,10 +41,10 @@ async function login (req, res, next) {
 
 async function verify (req, res, next) {
   try {
-    const response = await auth.isAuthorized(req)
-    next()
+    const response = await auth.parseToken(req.headers.authorization)
+    res.json({response})
   } catch (e) {
-      next({ status: 401, error: `Email or password is incorrect` })
+    next({ status: 401, error: `Email or password is incorrect` })
   }
 }
 

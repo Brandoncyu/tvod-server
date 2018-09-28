@@ -8,17 +8,25 @@ async function getAll(req, res, next){
 }
 
 async function getOne(req, res, next){
-  const userId = req.params.userId
-  const tvId = req.params.tvId
-  let data = await model.getOne(userId, tvId)
-  let episodes = await episodesModel.getAll(userId, tvId)
-  data.episodes = episodes
-  res.send({data})
+  try {
+    const userId = req.params.userId
+    const tvId = req.params.tvId
+    let data = await model.getOne(userId, tvId)
+    let episodes = await episodesModel.getAll(userId, tvId)
+    data.episodes = episodes
+    res.send({data})
+  } catch(e){
+    next({
+      status: 400,
+      error: `User has not seen series`
+    })
+  }
 }
 
 async function create(req, res, next){
   try {
     const body = req.body
+    console.log(body)
     let data = await model.create(req.body)
     res.status(201).send({data})
   } catch(e){

@@ -26,7 +26,6 @@ async function getOne(req, res, next){
 async function create(req, res, next){
   try {
     const body = req.body
-    console.log(body)
     let data = await model.create(req.body)
     res.status(201).send({data})
   } catch(e){

@@ -4,6 +4,16 @@ const episodesModel = require('../models/episodes')
 async function getAll(req, res, next){
   const userId = req.params.userId
   let data = await model.getAll(userId)
+  data = data.map(async element => {
+    let episodes = await episodesModel.getAll(userId, element['tv_id'])
+
+    const episodeCount = episodes.length
+    element.episode_count = episodeCount
+    console.log(element)
+    return element
+  })
+  data = await Promise.all(data)
+
   res.send({data})
 }
 

@@ -56,5 +56,4 @@ function destroy(userId, tvId){
     .then(([response]) => response)
 }
 
-
 module.exports = { getAll, getOne, create, update, destroy }

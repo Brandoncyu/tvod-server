@@ -8,8 +8,7 @@ async function getAll(req, res, next){
     let episodes = await episodesModel.getAll(userId, element['tv_id'])
 
     const episodeCount = episodes.length
-    element.episode_count = episodeCount
-    console.log(element)
+    element.episodes_watched = episodeCount
     return element
   })
   data = await Promise.all(data)

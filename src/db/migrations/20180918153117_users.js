@@ -6,6 +6,7 @@ exports.up = knex => {
         table.string('lastname').notNullable()
         table.string('username').notNullable().unique()
         table.string('email').notNullable().unique()
+        table.string('image').notNullable()
         table.text('password').notNullable()
         table.string('aboutme').notNullable()
         table.timestamps(true, true)

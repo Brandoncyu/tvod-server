@@ -22,10 +22,10 @@ function getAll() {
     })
 }
 
-async function create ({ firstname, lastname, username, email, password, aboutme, values }) {
+async function create ({ firstname, lastname, username, email, image, password, aboutme, values }) {
   const hashed = await promisify(bcrypt.hash)(password, 8)
   return db('users')
-    .insert({ firstname, lastname, username, email, password: hashed, aboutme })
+    .insert({ firstname, lastname, username, email, image, password: hashed, aboutme })
     .returning('*')
     .then(([response]) => {
       const id = response.id

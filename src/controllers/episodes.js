@@ -28,6 +28,20 @@ async function create(req, res, next){
   }
 }
 
+async function createMany(req, res, next){
+  try {
+    episodes = req.body.episodes
+
+    episodes.forEach(async episode => await model.create(episode))
+    res.status(201).send()
+  } catch (e) {
+      next({
+          status: 400,
+          error: `Could not add these episodes`
+      })
+  }
+}
+
 async function update(req, res, next){
   try {
     const userId = req.params.userId
@@ -59,4 +73,4 @@ async function destroy(req, res, next){
   }
 }
 
-module.exports = { getAll, getOne, create, update, destroy }
+module.exports = { getAll, getOne, create, createMany, update, destroy }

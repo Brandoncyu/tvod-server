@@ -4,6 +4,8 @@ exports.up = knex => {
         table.increments()
         table.integer('user_id').notNullable().defaultsTo(0)
         table.integer('tv_id').notNullable()
+        table.string('tv_name').notNullable()
+        table.string('image').notNullable()
         table.integer('ep_id').notNullable()
         table.integer('season_no').notNullable()
         table.integer('ep_no').notNullable()

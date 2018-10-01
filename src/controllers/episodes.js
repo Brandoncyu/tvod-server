@@ -32,7 +32,7 @@ async function createMany(req, res, next){
   try {
     episodes = req.body.episodes
 
-    episodes.forEach(async episode => await model.create(episode))
+    await model.create(episodes)
     res.status(201).send()
   } catch (e) {
       next({

@@ -7,6 +7,6 @@ router.post('/login', ctrl.login)
 router.get('/token', ctrl.verify)
 router.get('/:userId/except', ctrl.getAllExcept)
 router.get('/:userId', ctrl.getOne)
-router.get('/username/:username', ctrl.getOneByUsername)
+router.get('/:id/username/:username/', ctrl.getOneByUsername)
 
 module.exports = router

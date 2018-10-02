@@ -14,16 +14,48 @@ function getOne(userId) {
     })
 }
 
-function getOneByUsername(username) {
+function getOneByUsername(username, id) {
+  let responseId
   return db('users')
     .where({
       username: username
     })
+    .select('id', 'firstname', 'lastname', 'username', 'image', 'aboutme')
     .first()
     .then(response => {
       if (!response) throw new Error()
-      return response
-    })
+      return db('users_following')
+        .where({
+          user_id: id,
+          follow_id: response.id
+        })
+        .then(follower => {
+          follower.length !== 0 ? response.following = true : response.following = false
+          return db('series')
+            .where({
+              user_id: response.id
+            })
+            .then(series => {
+              const allSeries = series.map(theSeries =>{
+                return db('episodes')
+                .where({
+                  user_id: response.id,
+                  tv_id: theSeries['tv_id']
+                })
+                .then(episodes => {
+                  theSeries['episodes_watched'] = episodes.length
+                  return theSeries
+                })
+              })
+              return Promise.all(allSeries)
+            })
+            .then(final =>{
+              response.series = final
+              return response
+            })
+        })
+      })
+      .catch(console.log)
 }
 
 function getAll() {

@@ -15,7 +15,8 @@ async function getOne(req, res, next){
 async function getOneByUsername(req, res, next){
   try {
     const username = req.params.username
-    let data = await model.getOneByUsername(username)
+    const id = req.params.id
+    let data = await model.getOneByUsername(username, id)
     res.send({data})
   } catch (e){
       next({status:404, error: `Cannot find user`})

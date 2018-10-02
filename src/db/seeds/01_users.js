@@ -93,7 +93,7 @@ exports.seed = knex => {
     email: "nate@gmail.com",
     image: 'https://avatars2.githubusercontent.com/u/38363772?s=460&v=4',
     password: hashSync('password'),
-    aboutme: "Love shows with smart writing...I watch shows to laugh."
+    aboutme: "Love shows with smart writing and clever dialogue. Sitcoms are my guilty pleasure."
   }, {
     id: 11,
     firstname: 'Jewell',
@@ -102,7 +102,7 @@ exports.seed = knex => {
     email: "jewell@gmail.com",
     image: 'https://avatars2.githubusercontent.com/u/32821803?s=460&v=4',
     password: hashSync('password'),
-    aboutme: "I like witty humor & adult animation"
+    aboutme: "I like witty humor & adult animation."
   }, {
     id: 12,
     firstname: 'Matthew',

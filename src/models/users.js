@@ -14,11 +14,65 @@ function getOne(userId) {
     })
 }
 
+function getOneByUsername(username) {
+  return db('users')
+    .where({
+      username: username
+    })
+    .first()
+    .then(response => {
+      if (!response) throw new Error()
+      return response
+    })
+}
+
 function getAll() {
   return db('users')
     .returning('*')
     .then(response => {
       return response
+    })
+}
+
+function getAllExcept(userId) {
+  return db('users')
+    .whereNot({
+      id: userId
+    })
+    .select('id', 'firstname', 'lastname', 'username', 'image', 'aboutme')
+    .then(results => {
+      results = results.map(result =>{
+        return db('series')
+          .where({
+            user_id: result.id,
+            watched: true,
+            favorite: true
+          })
+          .then(series => {
+            seriesNames = series.map(element => element.tv_name)
+            result.favorites = seriesNames
+
+            return result
+          })
+        }
+      )
+      results = Promise.all(results)
+      return results
+    })
+    .then(results =>{
+      results = results.map(result =>{
+        return db('users_following')
+          .where({
+            user_id: userId,
+            follow_id: result.id
+          })
+          .then(follower => {
+            follower.length !== 0 ? result.following = true : result.following = false
+            return result
+          })
+      })
+      results = Promise.all(results)
+      return results
     })
 }
 
@@ -59,5 +113,5 @@ function login ({ username, password }) {
 }
 
 module.exports = {
-  getOne, getAll, create, interests, login
+  getOne, getOneByUsername, getAll, getAllExcept, create, interests, login
 }

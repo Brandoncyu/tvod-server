@@ -4,8 +4,18 @@ const jwt = require('jsonwebtoken')
 
 async function getOne(req, res, next){
   try {
-    const userId = req.params.userId
+    const userId = parseInt(req.params.userId)
     let data = await model.getOne(userId)
+    res.send({data})
+  } catch (e){
+      next({status:404, error: `Cannot find user`})
+  }
+}
+
+async function getOneByUsername(req, res, next){
+  try {
+    const username = req.params.username
+    let data = await model.getOneByUsername(username)
     res.send({data})
   } catch (e){
       next({status:404, error: `Cannot find user`})
@@ -15,6 +25,16 @@ async function getOne(req, res, next){
 async function getAll(req, res, next){
   let data = await model.getAll()
   res.send({data})
+}
+
+async function getAllExcept(req, res, next){
+  try {
+    const userId = parseInt(req.params.userId)
+    let data = await model.getAllExcept(userId)
+    res.send({data})
+  } catch (e){
+      next({status:404, error: `Cannot find user`})
+  }
 }
 
 async function signup (req, res, next) {
@@ -49,5 +69,5 @@ async function verify (req, res, next) {
 }
 
 module.exports = {
-  getOne, getAll, signup, login, verify
+  getOne, getOneByUsername, getAllExcept, getAll, signup, login, verify
 }

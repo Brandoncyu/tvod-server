@@ -21,6 +21,7 @@ app.use('/api/users', require('./src/routes/users'))
 app.use('/api/users/:userId/interests', require('./src/routes/interests'))
 app.use('/api/users/:userId/series', require('./src/routes/series'))
 app.use('/api/users/:userId/series/:tvId/episodes', require('./src/routes/episodes'))
+app.use('/api/users/:userId/episodes/:epId', require('./src/routes/episodes_users'))
 app.use('/api/users/:userId/following', require('./src/routes/following'))
 
 

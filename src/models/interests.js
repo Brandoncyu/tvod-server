@@ -1,6 +1,4 @@
-const { promisify } = require('util')
 const db = require('../db/knex')
-const bcrypt = require('bcryptjs')
 
 function getAll(userId) {
   return db('users_interests')

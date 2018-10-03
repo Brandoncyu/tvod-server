@@ -19,7 +19,7 @@ async function getOneByUsername(req, res, next){
     const id = req.params.id
     let data = await model.getOneByUsername(username, id)
     let dataId = data.id
-    console.log(dataId)
+    
     data.episodesReviews = await episodesModel.getLatestTen(dataId)
 
     res.send({data})

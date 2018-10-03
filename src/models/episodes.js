@@ -23,6 +23,17 @@ function getOne(userId, tvId, epId) {
     .then(([response]) => response)
 }
 
+function getLatestTen(userId){
+  return db('episodes')
+    .where({
+      user_id: userId
+    })
+    .orderBy('updated_at', 'desc')
+    .limit(10)
+    .then(episodes => {
+      return episodes})
+}
+
 function create(body){
   return db('episodes')
     .insert(body)
@@ -60,4 +71,4 @@ function destroy(userId, tvId, epId){
     .then(([response]) => response)
 }
 
-module.exports = { getAll, getOne, create, update, destroy }
+module.exports = { getAll, getOne, getLatestTen, create, update, destroy }

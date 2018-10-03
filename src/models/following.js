@@ -8,8 +8,22 @@ function getAllFollowings(userId) {
     .where({
       user_id: userId
     })
-    .then(response => {
-      return response
+    .select('follow_id', 'username', 'image')
+    .then(followers => {
+      let newFollowers = followers.map(follower => {
+        return db('episodes')
+        .where({
+          user_id: follower.follow_id
+        })
+        .orderBy('updated_at', 'desc')
+        .first()
+        .then(response => {
+          follower.episode_description = response
+          return follower
+        })
+      })
+       newFollowers = Promise.all(newFollowers)
+       return newFollowers
     })
 }
 

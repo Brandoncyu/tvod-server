@@ -1,4 +1,5 @@
 const model = require('../models/users')
+const episodesModel = require('../models/episodes')
 const auth = require('../lib/auth')
 const jwt = require('jsonwebtoken')
 
@@ -17,6 +18,10 @@ async function getOneByUsername(req, res, next){
     const username = req.params.username
     const id = req.params.id
     let data = await model.getOneByUsername(username, id)
+    let dataId = data.id
+    console.log(dataId)
+    data.episodesReviews = await episodesModel.getLatestTen(dataId)
+
     res.send({data})
   } catch (e){
       next({status:404, error: `Cannot find user`})

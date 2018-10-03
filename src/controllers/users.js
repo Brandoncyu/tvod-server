@@ -70,7 +70,7 @@ async function verify (req, res, next) {
     const response = await auth.parseToken(req.headers.authorization)
     res.json({response})
   } catch (e) {
-    next({ status: 401, error: `Please Login Again` })
+    next({ status: 401, error: `Please Login` })
   }
 }
 

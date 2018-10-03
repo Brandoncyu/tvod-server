@@ -19,7 +19,7 @@ async function getOneByUsername(req, res, next){
     const id = req.params.id
     let data = await model.getOneByUsername(username, id)
     let dataId = data.id
-    
+
     data.episodesReviews = await episodesModel.getLatestTen(dataId)
 
     res.send({data})
@@ -61,7 +61,7 @@ async function login (req, res, next) {
     const id = response.id
     res.json({ token, id })
   } catch (e) {
-      next({ status: 401, error: `Email or password is incorrect` })
+      next({ status: 401, error: `Username or password is incorrect` })
   }
 }
 
@@ -70,7 +70,7 @@ async function verify (req, res, next) {
     const response = await auth.parseToken(req.headers.authorization)
     res.json({response})
   } catch (e) {
-    next({ status: 401, error: `Email or password is incorrect` })
+    next({ status: 401, error: `Please Login Again` })
   }
 }
 

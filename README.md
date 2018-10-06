@@ -63,6 +63,7 @@ This project has been deployed on Heroku at the address: https://pacific-spire-3
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 * [Node](https://nodejs.org/en/) - Package ecosystem
 * [Heroku](https://www.heroku.com/) - A cloud platform to deploy your apps, whether front-end or backend.
+* [Moment](https://momentjs.com/) - Npm package to manipulate dates and times in JavaScript.
 
 ## Author
 

@@ -22,7 +22,7 @@ exports.seed = knex => {
       ep_no: 2,
       ep_name: 'Mijo',
       watched: true,
-      comments: 'An spectacular follow-up that brings more anticipation.',
+      comments: 'A spectacular follow-up that brings more anticipation.',
       rating: 5
     },{ user_id: 1,
     tv_id: 618,

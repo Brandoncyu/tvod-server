@@ -6,8 +6,6 @@ The frontend can be found at:
 
 T.V.O.D. is a web platform for users to track what television programs they are watching during this era of "Peak TV." Users can mark what shows they consider their favorites, leave comments and ratings for each episode, and receive a schedule of all episodes upcoming and recently aired. They also have the ability to follow other users and receive updates on what their friends are currently watching.
 
-ABUNDANTfields is a web platform for farmers to connect to landowners and rent agricultural land. Landowners can create fields of any polygonal shape to put up for rent. Users can then cruise field listings for a field to rent.
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.

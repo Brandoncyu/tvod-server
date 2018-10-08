@@ -45,9 +45,9 @@ Finally, start the server in development mode:
 * npm run dev
 ```
 
-<!-- ## Deployment
+## Deployment
 
-This project has been deployed on Heroku at the address: https://pacific-spire-38027.herokuapp.com/ -->
+This project has been deployed on Heroku at the address: https://pacific-spire-38027.herokuapp.com/
 
 ## Built With
 

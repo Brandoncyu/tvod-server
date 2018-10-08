@@ -63,6 +63,10 @@ This project has been deployed on Heroku at the address: https://pacific-spire-3
 * [Heroku](https://www.heroku.com/) - A cloud platform to deploy your apps, whether front-end or backend.
 * [Moment](https://momentjs.com/) - Npm package to manipulate dates and times in JavaScript.
 
+## Contributing
+
+Please send me a message for details on our code of conduct, and the process for submitting pull requests.
+
 ## Author
 
 * **Brandon Yu** - *Initial work* - [Brandoncyu](https://github.com/Brandoncyu)

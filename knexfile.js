@@ -5,9 +5,6 @@ const path = require('path')
 const config = {
   client: 'pg',
   connection: DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  },
   migrations: {
     directory: path.join(__dirname, 'src', 'db', 'migrations')
   },
